@@ -1,34 +1,42 @@
 import Link from "next/link";
-import { NAV_LINKS } from "@/lib/nav";
+import { SHEET_ORDER, sectionById } from "@/lib/sections";
+import { OctagonMark } from "@/components/OctagonMark";
+
+const NAV = SHEET_ORDER.filter((id): id is string => id !== null).map(sectionById);
 
 export function Footer() {
   return (
-    <footer className="mt-16 border-t border-border bg-surface">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-start md:justify-between">
-        <div className="max-w-sm">
-          <p className="text-sm font-semibold text-heading">
-            O·R·G — Octagon Research Group and Spirituality Centers
+    <footer className="mt-24 border-t border-border bg-surface">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_1fr]">
+        <div className="max-w-md">
+          <div className="flex items-center gap-3">
+            <OctagonMark size={34} />
+            <span className="display text-xl">Octagon Religious-Research Group</span>
+          </div>
+          <p className="mt-4 text-sm text-muted">
+            This is a preview built to show what ORG&apos;s site could become. The official site is{" "}
+            <a href="https://orgspirituality.org" className="text-accent">orgspirituality.org</a>, and
+            members vote on every change to it.
           </p>
-          <p className="mt-2 text-sm text-foreground/60">
-            Where science and spirituality meet. Founded by Tripp Aardema.
+          <p className="mt-3 text-sm text-muted">
+            Artwork and words come from orgspirituality.org. The three lights come from{" "}
+            <a href="https://org-new-look.netlify.app/" className="text-accent">Renan Teixeira&apos;s design proposal</a>.
+            Built by{" "}
+            <a href="https://github.com/drasticstatic" className="text-accent">drasticstatic</a> with{" "}
+            <a href="https://github.com/drasticstatic/anthropas-argus-alfred-public-preview" className="text-accent">Alfred</a>.
           </p>
         </div>
-
-        <nav className="flex flex-wrap gap-x-6 gap-y-2">
-          {[...NAV_LINKS, { href: "/join", label: "Join" }].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-foreground/60 hover:text-accent"
-            >
-              {link.label}
+        <nav aria-label="Footer" className="grid grid-cols-2 content-start gap-x-8 gap-y-2 sm:grid-cols-3">
+          {NAV.map((s) => (
+            <Link key={s.id} href={s.href} className="text-sm text-muted no-underline hover:text-accent">
+              {s.label}
             </Link>
           ))}
+          <Link href="/join" className="text-sm text-muted no-underline hover:text-accent">Join</Link>
+          <a href="https://github.com/Octagon-Religious-Research-Group-ORG" className="text-sm text-muted no-underline hover:text-accent">
+            GitHub
+          </a>
         </nav>
-      </div>
-      <div className="border-t border-border px-4 py-4 text-center text-xs text-foreground/45 sm:px-6">
-        Early public preview — content and web3 features are an evolving
-        scaffold, not a final release.
       </div>
     </footer>
   );

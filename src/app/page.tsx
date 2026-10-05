@@ -1,94 +1,77 @@
 import Link from "next/link";
-import { Card } from "@/components/Page";
+import { HomeHero } from "@/components/HomeHero";
+import { ThreeLights } from "@/components/ThreeLights";
+import { BeliefItem } from "@/components/Belief";
+import { BELIEFS } from "@/lib/beliefs";
+import { withBase } from "@/lib/sections";
 
-const PILLARS = [
-  {
-    title: "Beliefs, decided together",
-    body: "Members vote on individual and collective beliefs. Anything held by a majority becomes a shared ORG belief on the home page.",
-    href: "/beliefs",
-  },
-  {
-    title: "Research, not just ritual",
-    body: "Spiritual inquiry paired with real research directions — from entheogen safety to substance-use treatment.",
-    href: "/research",
-  },
-  {
-    title: "Octagon centers",
-    body: "The long-term vision: octagon-shaped research and spiritual centers, built one at a time as the community grows.",
-    href: "/infrastructure",
-  },
-];
+const FEATURED = ["I", "VIII", "VI"];
 
 export default function Home() {
+  const featured = BELIEFS.filter((b) => FEATURED.includes(b.roman));
+
   return (
-    <div>
-      <div className="border-b border-border bg-gradient-to-b from-surface to-background">
-        <div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6">
-          <p className="text-sm font-medium uppercase tracking-wider text-accent">
-            Octagon Research Group and Spirituality Centers
+    <>
+      <HomeHero />
+
+      <section className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+        <div className="max-w-md">
+          <h2 className="text-[2.4rem] leading-tight">Beliefs are kept by vote</h2>
+          <p className="mt-4 text-muted">
+            Any member can propose a belief. It becomes an ORG belief when most voting members agree, and
+            it can be revisited whenever someone asks.
           </p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-heading sm:text-5xl">
-            Where science and spirituality meet.
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-foreground/70">
-            ORG is a member-governed community exploring the intersection of
-            spirituality and scientific research — and building toward
-            physical Octagon centers that put both into practice.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/join"
-              className="rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-on-accent hover:bg-accent-strong"
-            >
-              Join or sign in as a member
+          <p className="mt-6">
+            <Link href="/beliefs" className="text-accent">
+              Read all nine majority-held beliefs
             </Link>
-            <Link
-              href="/about"
-              className="rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground/80 hover:border-accent hover:text-accent"
-            >
-              Read our mission
+          </p>
+        </div>
+        <div className="space-y-10">
+          {featured.map((b) => (
+            <BeliefItem key={b.roman} belief={b} compact />
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-border bg-surface-muted/40">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+          <div className="max-w-2xl">
+            <h2 className="text-[2.4rem] leading-tight">Renan&apos;s three directions, living together</h2>
+            <p className="mt-4 text-muted">
+              Renan proposed three looks for orgspirituality.org and asked members to choose one. This
+              preview keeps all three. Pick the one that suits you, or let the time of day choose. Members
+              still decide what the main site becomes.
+            </p>
+            <p className="mt-4">
+              <a href="https://org-new-look.netlify.app/" className="text-accent">
+                See Renan&apos;s proposal
+              </a>
+            </p>
+          </div>
+          <div className="mt-10">
+            <ThreeLights />
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-5xl items-center gap-10 px-4 py-20 sm:px-6 md:grid-cols-[auto_1fr]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={withBase("/art/gifts.webp")} alt="" className="emblem mx-auto h-44 w-44 object-cover sm:h-56 sm:w-56" />
+        <div className="max-w-xl">
+          <h2 className="text-[2.4rem] leading-tight">Support the work</h2>
+          <p className="mt-4 text-muted">
+            ORG shares useful objects with members whether or not they can meet a suggested donation, and
+            gifts fund the research and the temples to come. This preview adds a crypto option alongside
+            ORG&apos;s PayPal and Venmo.
+          </p>
+          <div className="mt-6">
+            <Link href="/give" className="oct btn btn-primary">
+              Give to ORG
             </Link>
           </div>
         </div>
-      </div>
-
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="grid gap-6 md:grid-cols-3">
-          {PILLARS.map((p) => (
-            <Card key={p.href}>
-              <h3 className="font-semibold text-heading">
-                {p.title}
-              </h3>
-              <p className="mt-2 text-sm text-foreground/70">{p.body}</p>
-              <Link
-                href={p.href}
-                className="mt-4 inline-block text-sm font-medium text-accent hover:text-accent-strong"
-              >
-                Learn more →
-              </Link>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      <div className="border-t border-border bg-surface">
-        <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6">
-          <h2 className="text-2xl font-semibold text-heading">
-            Gifts and contributions
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-foreground/70">
-            Whether or not you can meet a suggested donation, ORG shares
-            useful objects with members — and now accepts crypto
-            contributions alongside traditional gifts.
-          </p>
-          <Link
-            href="/give"
-            className="mt-6 inline-block rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-on-accent hover:bg-accent-strong"
-          >
-            Give or request offerings →
-          </Link>
-        </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

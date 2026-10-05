@@ -1,77 +1,97 @@
-import Link from "next/link";
-import { PageHeader, Section, Card } from "@/components/Page";
+import { PageHeader } from "@/components/Page";
+
+type Article = { roman: string; title: string; lead: string; points?: string[] };
+
+// From orgspirituality.org/about (snapshot 2026-10-05), lightly trimmed.
+const ARTICLES: Article[] = [
+  {
+    roman: "I",
+    title: "Identity and name",
+    lead: "“ORG” stands for the Octagon Religious-Research Group and Spirituality Centers, a 508(c)(1)(A) religious organization and a 501(c)(3) nonprofit.",
+    points: [
+      "ORG fits the requirements of a church but prefers to be known simply as a spiritual organization.",
+      "The name came from years of entheogenic visions, and members can vote to change it.",
+    ],
+  },
+  {
+    roman: "II",
+    title: "Our mission",
+    lead: "ORG aims to improve the Universe through advances in the human understanding of spirituality and science.",
+    points: [
+      "Octagon-shaped temples will give spiritualists a safe place to connect and experience theophany.",
+      "Some locations will be for scientists researching anything that improves the Universe.",
+      "Improving the Universe includes strengthening public understanding of, and respect for, individual spirituality.",
+    ],
+  },
+  {
+    roman: "III",
+    title: "Governance by vote",
+    lead: "ORG runs on a majority-rules voting system and works to remove hierarchy.",
+    points: [
+      "Beliefs can change quickly as science discovers more, or as public understanding changes.",
+      "Most votes, like those on beliefs, never close and can change at any time.",
+      "The hardest open question is how long a vote should run when something is urgent.",
+    ],
+  },
+  {
+    roman: "IV",
+    title: "Names of the Creator",
+    lead: "ORG respects every name that shows respect toward The Universal Creator.",
+    points: ["The Universal Creator is the name currently preferred in official documents, open to a vote."],
+  },
+  {
+    roman: "V",
+    title: "Entheogens",
+    lead: "The Universal Creator intends entheogens, psychedelic and non-psychedelic, to be freely used by all interested humans.",
+    points: ["A major goal of ORG is wider legal access to, and more approved uses of, psychedelics for all who seek them."],
+  },
+  {
+    roman: "VI",
+    title: "An open document",
+    lead: "Everyone who reads ORG's documents is invited to suggest improvements to any page or belief, member or not.",
+  },
+  {
+    roman: "VII",
+    title: "What members can do",
+    lead: "Members who join can:",
+    points: [
+      "Keep a personal page stating their spiritual beliefs and research interests.",
+      "Vote.",
+      "Meet regularly, in person or by video, to discuss beliefs and gather in ceremony.",
+      "Lead ceremonies.",
+      "Use ORG's resources directly.",
+    ],
+  },
+];
 
 export default function AboutPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="About Us"
-        title="Our mission"
-        lede="ORG aims to improve the world through advances in the human understanding of spirituality and science — and by building physical spaces where both can be practiced together."
+        id="about"
+        title="About ORG"
+        lede="A living document, revised as our knowledge and beliefs evolve."
       />
-
-      <Section title="Where science and spirituality meet">
-        <p>
-          &ldquo;ORG&rdquo; and &ldquo;The ORG&rdquo; stand for The Octagon
-          Research Group and Spirituality Centers. The name reflects a
-          long-term vision: octagon-shaped spiritual and research centers,
-          built to advance humanity&rsquo;s understanding of consciousness,
-          well-being, and what founder Tripp Aardema refers to as{" "}
-          <em>The Universal Creator</em>.
-        </p>
-        <p>
-          ORG treats belief as something to keep refining rather than settle
-          once. This site — and the beliefs published on it — will be updated
-          as the community learns more and as member votes change what ORG
-          collectively holds to be true. See{" "}
-          <Link href="/beliefs" className="text-accent underline">
-            Beliefs
-          </Link>{" "}
-          for how that process works.
-        </p>
-      </Section>
-
-      <Section title="Founder">
-        <Card>
-          <h3 className="font-semibold text-heading">
-            Tripp Aardema
-          </h3>
-          <p className="mt-2 text-sm text-foreground/70">
-            Tripp founded ORG after a series of entheogenic experiences
-            convinced him that spiritual practice and rigorous scientific
-            research belong in the same institution rather than separate
-            ones. He studies experimental neuroscience and medicinal
-            chemistry, with a focus on the therapeutic and spiritual
-            potential of entheogens — and on the legal and safety work
-            required to make that potential accessible responsibly.
-          </p>
-          <p className="mt-3 text-sm text-foreground/70">
-            His view: entheogens (psychedelic and non-psychedelic alike) have
-            been used throughout human history to seek connection with the
-            divine, to heal, and to better understand the universe — and that
-            responsible, well-regulated access to them is a matter of
-            religious and bodily freedom.
-          </p>
-        </Card>
-      </Section>
-
-      <Section title="What we're building">
-        <ul className="list-disc space-y-2 pl-5">
-          <li>
-            A member-governed community that votes on shared beliefs,
-            research priorities, and how the organization spends its
-            resources.
-          </li>
-          <li>
-            Research into entheogens as tools for healing, understanding
-            consciousness, and answering open scientific questions.
-          </li>
-          <li>
-            Eventually, physical Octagon centers — starting with treatment-
-            and research-focused facilities, and expanding from there.
-          </li>
-        </ul>
-      </Section>
+      <div className="mx-auto max-w-3xl space-y-14 px-4 py-14 sm:px-6">
+        {ARTICLES.map((a) => (
+          <article key={a.roman} className="grid grid-cols-[3.25rem_1fr] gap-x-3 sm:grid-cols-[4.5rem_1fr]">
+            <span aria-hidden className="display text-[1.9rem] leading-none text-accent sm:text-[2.4rem]">
+              {a.roman}
+            </span>
+            <div>
+              <h2 className="text-[1.7rem] leading-tight">{a.title}</h2>
+              <p className="mt-3 text-lg">{a.lead}</p>
+              {a.points && (
+                <ul className="mt-4 space-y-2 border-l border-border pl-4 text-foreground/85">
+                  {a.points.map((p) => (
+                    <li key={p}>{p}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }

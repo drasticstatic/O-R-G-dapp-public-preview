@@ -12,9 +12,9 @@ export default function JoinPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Join"
-        title="Join or sign in as a member"
-        lede="Membership gets you a profile, a vote on every belief and decision ORG makes, and a voice in what gets built next."
+        id="join"
+        title="Join ORG"
+        lede="Membership gives you a profile, a vote on every belief and decision, and a voice in what gets built next."
       />
 
       <Section title="Connect a wallet">
