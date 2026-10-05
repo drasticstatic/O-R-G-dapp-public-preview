@@ -1,0 +1,24 @@
+1:"$Sreact.fragment"
+2:I[61304,[],"ClientPageRoot"]
+3:I[26236,["8451","static/chunks/4e88bc13-d1fac59a38adcd6f.js","8500","static/chunks/8500-01a63dafd809e317.js","680","static/chunks/680-e54fcac24133b081.js","5335","static/chunks/app/join/page-4a4e9a84e1527bf8.js"],"default"]
+6:I[90484,[],"OutletBoundary"]
+7:"$Sreact.suspense"
+b:I[90484,[],"ViewportBoundary"]
+c:I[90484,[],"MetadataBoundary"]
+d:I[86869,[],"IconMark"]
+f:I[57121,[],""]
+10:I[74581,[],""]
+a:X
+12:X
+12:C
+0:{"buildId":"nAZJLXqVNfx4U2oVif4ol","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],null,["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":"$@9","staleTime":"$a","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$Lb",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"ORG: Octagon Religious-Research Group"}],["$","meta","1",{"name":"description","content":"Where science and spirituality meet. A member-governed community that votes on its beliefs and plans octagon-shaped temples and research centers."}],["$","link","2",{"rel":"icon","href":"/O-R-G-dapp-public-preview/icon.png?f732bf7d5525cbea","type":"image/png","sizes":"512x512"}],["$","link","3",{"rel":"apple-touch-icon","href":"/O-R-G-dapp-public-preview/apple-icon.png?0971b98bd6a63e92","type":"image/png","sizes":"180x180"}],["$","$Ld","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":"$@e","staleTime":"$a","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Lf",null,{"parallelRouterKey":"children","template":["$","$L10",null,{}]}]]}],"isPartial":"$@11","staleTime":"$a","varyParams":"$12"}],"isUpgradeableISRFallback":false,"a":"$@13","rootVaryParams":null,"needsRuntimeRequest":"$@14"}
+4:{}
+5:"$0:data:0:rsc:props:children:0:props:serverProvidedParams:params"
+8:null
+14:true
+a:300
+a:C
+13:0
+e:"$undefined"
+11:"$undefined"
+9:"$undefined"
