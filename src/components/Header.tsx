@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { NAV_LINKS } from "@/lib/nav";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -12,7 +13,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link href="/" className="flex items-baseline gap-2 shrink-0">
-          <span className="text-lg font-semibold tracking-wide text-canopy-deep dark:text-canopy">
+          <span className="text-lg font-semibold tracking-wide text-heading">
             O·R·G
           </span>
           <span className="hidden text-xs text-foreground/60 sm:inline">
@@ -33,6 +34,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <div className="hidden sm:block">
             <ConnectButton showBalance={false} chainStatus="icon" />
           </div>

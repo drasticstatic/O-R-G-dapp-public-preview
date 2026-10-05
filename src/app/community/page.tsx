@@ -11,7 +11,7 @@ export default function CommunityPage() {
 
       <Section title="Weekly gathering">
         <Card>
-          <h3 className="font-semibold text-canopy-deep dark:text-canopy">
+          <h3 className="font-semibold text-heading">
             Sunday discussion
           </h3>
           <p className="mt-2 text-sm text-foreground/70">

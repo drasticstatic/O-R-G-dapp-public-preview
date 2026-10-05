@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageHeader, Section, Card } from "@/components/Page";
 
 export default function LegalPage() {
@@ -68,9 +69,9 @@ export default function LegalPage() {
           Earlier internal drafts of ORG&apos;s beliefs and legal notes are
           being organized into this site over time. If you&apos;re looking
           for a reference that isn&apos;t here yet, reach out through{" "}
-          <a href="/community" className="text-accent underline">
+          <Link href="/community" className="text-accent underline">
             Community
-          </a>
+          </Link>
           .
         </p>
       </Section>

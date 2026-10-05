@@ -17,7 +17,7 @@ export function PageHeader({
             {eyebrow}
           </p>
         )}
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-canopy-deep dark:text-canopy sm:text-4xl">
+        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-heading sm:text-4xl">
           {title}
         </h1>
         {lede && (
@@ -40,7 +40,7 @@ export function Section({
   return (
     <section className={`mx-auto max-w-4xl px-4 py-10 sm:px-6 ${className}`}>
       {title && (
-        <h2 className="text-xl font-semibold text-canopy-deep dark:text-canopy">
+        <h2 className="text-xl font-semibold text-heading">
           {title}
         </h2>
       )}

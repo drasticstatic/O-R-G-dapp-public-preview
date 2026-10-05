@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { PageHeader, Section, Card } from "@/components/Page";
@@ -53,9 +55,9 @@ export default function JoinPage() {
         <p className="text-sm text-foreground/60">
           Full membership accounts, profiles, and voting are being built out
           for this site — check back, or reach out through{" "}
-          <a href="/community" className="text-accent underline">
+          <Link href="/community" className="text-accent underline">
             Community
-          </a>
+          </Link>
           .
         </p>
       </Section>

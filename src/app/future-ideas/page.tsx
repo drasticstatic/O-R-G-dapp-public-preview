@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageHeader, Section, Card } from "@/components/Page";
 
 const IDEAS = [
@@ -32,7 +33,7 @@ export default function FutureIdeasPage() {
         <div className="grid gap-5 sm:grid-cols-2">
           {IDEAS.map((idea) => (
             <Card key={idea.title}>
-              <h3 className="font-semibold text-canopy-deep dark:text-canopy">
+              <h3 className="font-semibold text-heading">
                 {idea.title}
               </h3>
               <p className="mt-2 text-sm text-foreground/70">{idea.body}</p>
@@ -45,9 +46,9 @@ export default function FutureIdeasPage() {
         <p>
           Any member can submit ideas for anything else the community should
           consider. See{" "}
-          <a href="/community" className="text-accent underline">
+          <Link href="/community" className="text-accent underline">
             Community
-          </a>{" "}
+          </Link>{" "}
           for how to get involved.
         </p>
       </Section>

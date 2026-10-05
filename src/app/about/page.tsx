@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageHeader, Section, Card } from "@/components/Page";
 
 export default function AboutPage() {
@@ -23,16 +24,16 @@ export default function AboutPage() {
           once. This site — and the beliefs published on it — will be updated
           as the community learns more and as member votes change what ORG
           collectively holds to be true. See{" "}
-          <a href="/beliefs" className="text-accent underline">
+          <Link href="/beliefs" className="text-accent underline">
             Beliefs
-          </a>{" "}
+          </Link>{" "}
           for how that process works.
         </p>
       </Section>
 
       <Section title="Founder">
         <Card>
-          <h3 className="font-semibold text-canopy-deep dark:text-canopy">
+          <h3 className="font-semibold text-heading">
             Tripp Aardema
           </h3>
           <p className="mt-2 text-sm text-foreground/70">

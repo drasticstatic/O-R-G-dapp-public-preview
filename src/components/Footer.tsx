@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="mt-16 border-t border-border bg-surface">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-start md:justify-between">
         <div className="max-w-sm">
-          <p className="text-sm font-semibold text-canopy-deep dark:text-canopy">
+          <p className="text-sm font-semibold text-heading">
             O·R·G — Octagon Research Group and Spirituality Centers
           </p>
           <p className="mt-2 text-sm text-foreground/60">

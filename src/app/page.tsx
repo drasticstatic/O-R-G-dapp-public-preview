@@ -27,7 +27,7 @@ export default function Home() {
           <p className="text-sm font-medium uppercase tracking-wider text-accent">
             Octagon Research Group and Spirituality Centers
           </p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-canopy-deep dark:text-canopy sm:text-5xl">
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-heading sm:text-5xl">
             Where science and spirituality meet.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-foreground/70">
@@ -38,7 +38,7 @@ export default function Home() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/join"
-              className="rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-strong"
+              className="rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-on-accent hover:bg-accent-strong"
             >
               Join or sign in as a member
             </Link>
@@ -56,7 +56,7 @@ export default function Home() {
         <div className="grid gap-6 md:grid-cols-3">
           {PILLARS.map((p) => (
             <Card key={p.href}>
-              <h3 className="font-semibold text-canopy-deep dark:text-canopy">
+              <h3 className="font-semibold text-heading">
                 {p.title}
               </h3>
               <p className="mt-2 text-sm text-foreground/70">{p.body}</p>
@@ -73,7 +73,7 @@ export default function Home() {
 
       <div className="border-t border-border bg-surface">
         <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6">
-          <h2 className="text-2xl font-semibold text-canopy-deep dark:text-canopy">
+          <h2 className="text-2xl font-semibold text-heading">
             Gifts and contributions
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-foreground/70">
@@ -83,7 +83,7 @@ export default function Home() {
           </p>
           <Link
             href="/give"
-            className="mt-6 inline-block rounded-md bg-canopy px-5 py-2.5 text-sm font-medium text-white hover:bg-canopy-deep dark:text-canopy-deep"
+            className="mt-6 inline-block rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-on-accent hover:bg-accent-strong"
           >
             Give or request offerings →
           </Link>
