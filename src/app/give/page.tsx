@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageHeader, Section, Card } from "@/components/Page";
 import { DonateForm } from "@/components/DonateForm";
 
@@ -29,7 +30,7 @@ export default function GivePage() {
         <div className="grid gap-5 sm:grid-cols-3">
           {OFFERINGS.map((o) => (
             <Card key={o.title}>
-              <h3 className="font-semibold text-canopy-deep dark:text-canopy">
+              <h3 className="font-semibold text-heading">
                 {o.title}
               </h3>
               <p className="mt-2 text-sm text-foreground/70">{o.body}</p>
@@ -41,13 +42,13 @@ export default function GivePage() {
       <Section title="Support ORG">
         <p className="mb-4">
           Contributions fund the community, the research described on the{" "}
-          <a href="/research" className="text-accent underline">
+          <Link href="/research" className="text-accent underline">
             Research
-          </a>{" "}
+          </Link>{" "}
           page, and eventually the Octagon centers described under{" "}
-          <a href="/infrastructure" className="text-accent underline">
+          <Link href="/infrastructure" className="text-accent underline">
             Infrastructure
-          </a>
+          </Link>
           .
         </p>
         <DonateForm />

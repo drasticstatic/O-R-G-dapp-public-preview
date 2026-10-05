@@ -16,7 +16,7 @@ export function DonateForm() {
 
   return (
     <div className="rounded-xl border border-border bg-surface p-6">
-      <h3 className="font-semibold text-canopy-deep dark:text-canopy">
+      <h3 className="font-semibold text-heading">
         Give crypto
       </h3>
 
@@ -46,7 +46,7 @@ export function DonateForm() {
                 onClick={() => setAmount(preset)}
                 className={`rounded-md border px-3 py-1.5 text-sm ${
                   amount === preset
-                    ? "border-accent bg-accent text-white"
+                    ? "border-accent bg-accent text-on-accent"
                     : "border-border text-foreground/70"
                 }`}
               >
@@ -74,18 +74,18 @@ export function DonateForm() {
                 value: parseEther(amount || "0"),
               })
             }
-            className="w-full rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-strong disabled:opacity-50"
+            className="w-full rounded-md bg-accent px-4 py-2 text-sm font-medium text-on-accent hover:bg-accent-strong disabled:opacity-50"
           >
             {isPending || isConfirming ? "Confirming…" : `Send ${amount || "0"} ETH`}
           </button>
 
           {isSuccess && (
-            <p className="text-sm text-canopy-deep dark:text-canopy">
+            <p className="text-sm text-heading">
               Thank you — transaction confirmed.
             </p>
           )}
           {error && (
-            <p className="text-sm text-red-600 dark:text-red-400">
+            <p className="text-sm text-red-600">
               {error.message}
             </p>
           )}

@@ -1,47 +1,80 @@
 @import "tailwindcss";
 
-:root {
-  --background: #f7f4ee;
-  --foreground: #16201a;
+/*
+ * Palettes from the "ORG Design Directions" proposal (org-new-look):
+ *   dark  = A · Night Sanctuary
+ *   light = B · Prism Light
+ * Dark is the default. The toggle sets data-theme on <html>.
+ */
+:root,
+:root[data-theme="dark"] {
+  --background: #100e1c;
+  --foreground: #eee8f6;
+  --muted: #b4abc9;
+  --surface: #1a1730;
+  --surface-muted: #221d33;
+  --border: #2f2a48;
+  --accent: #e9be72;
+  --accent-strong: #f2d08f;
+  --on-accent: #1b1408;
+  --heading: #c9a4ff;
+  --hero-from: #2a1f52;
+  --aurora: linear-gradient(90deg, #8b6cf6, #e26db1, #4fd1c5);
+  --font-heading: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-manrope), system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --background: #f5f3fa;
+  --foreground: #221d33;
+  --muted: #5e566e;
   --surface: #ffffff;
-  --surface-muted: #eee8db;
-  --border: #ddd4bf;
-  --accent: #8a6d2f;
-  --accent-strong: #6b5320;
-  --canopy: #1f3325;
-  --canopy-deep: #0f1a12;
+  --surface-muted: #ece8f6;
+  --border: #d9d3e6;
+  --accent: #8e6420;
+  --accent-strong: #6b4fa0;
+  --on-accent: #ffffff;
+  --heading: #6b4fa0;
+  --hero-from: #ffffff;
+  --aurora: linear-gradient(90deg, #ffb3c7, #ffd9a0, #c8f2c2, #a8e3f5, #c9b8ff);
+  --font-heading: var(--font-newsreader), Georgia, serif;
+  --font-body: var(--font-hanken), system-ui, sans-serif;
+  color-scheme: light;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
   --color-surface: var(--surface);
   --color-surface-muted: var(--surface-muted);
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
-  --color-canopy: var(--canopy);
-  --color-canopy-deep: var(--canopy-deep);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f1611;
-    --foreground: #ece6d6;
-    --surface: #16201a;
-    --surface-muted: #1c2820;
-    --border: #2a382f;
-    --accent: #cdaa5c;
-    --accent-strong: #e2c37c;
-    --canopy: #b9c9b6;
-    --canopy-deep: #ece6d6;
-  }
+  --color-on-accent: var(--on-accent);
+  --color-heading: var(--heading);
+  --font-sans: var(--font-body);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+.hero-glow {
+  background: radial-gradient(120% 70% at 50% 0%, var(--hero-from) 0%, var(--background) 60%);
+}
+
+.aurora-text {
+  background: var(--aurora);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

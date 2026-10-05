@@ -43,7 +43,7 @@ export default function ResearchPage() {
         <div className="grid gap-5 sm:grid-cols-2">
           {RESEARCH_DIRECTIONS.map((r) => (
             <Card key={r.title}>
-              <h3 className="font-semibold text-canopy-deep dark:text-canopy">
+              <h3 className="font-semibold text-heading">
                 {r.title}
               </h3>
               <p className="mt-2 text-sm text-foreground/70">{r.body}</p>

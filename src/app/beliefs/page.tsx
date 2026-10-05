@@ -54,7 +54,7 @@ export default function BeliefsPage() {
         <div className="grid gap-5 sm:grid-cols-2">
           {CORE_BELIEFS.map((b) => (
             <Card key={b.title}>
-              <h3 className="font-semibold text-canopy-deep dark:text-canopy">
+              <h3 className="font-semibold text-heading">
                 {b.title}
               </h3>
               <p className="mt-2 text-sm text-foreground/70">{b.body}</p>
