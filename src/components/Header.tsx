@@ -2,71 +2,75 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { NAV_LINKS } from "@/lib/nav";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { SHEET_ORDER, sectionById } from "@/lib/sections";
+import { OctagonMark } from "@/components/OctagonMark";
+import { JourneyButton } from "@/components/Journey";
+
+const NAV = SHEET_ORDER.filter((id): id is string => id !== null).map(sectionById);
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isActive = (href: string) => pathname === href || pathname === `${href}/`;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-baseline gap-2 shrink-0">
-          <span className="text-lg font-semibold tracking-wide text-heading">
-            O·R·G
-          </span>
-          <span className="hidden text-xs text-foreground/60 sm:inline">
-            Octagon Research Group and Spirituality Centers
-          </span>
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5 no-underline" aria-label="ORG home">
+          <OctagonMark size={30} />
+          <span className="display text-xl text-heading">ORG</span>
         </Link>
 
-        <nav className="hidden items-center gap-5 lg:flex">
-          {NAV_LINKS.map((link) => (
+        <nav aria-label="Main" className="hidden items-center gap-5 xl:flex">
+          {NAV.map((s) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-foreground/75 transition-colors hover:text-accent"
+              key={s.id}
+              href={s.href}
+              aria-current={isActive(s.href) ? "page" : undefined}
+              className="text-[0.92rem] text-foreground/80 no-underline transition-colors hover:text-accent aria-[current=page]:text-accent aria-[current=page]:underline"
             >
-              {link.label}
+              {s.label}
             </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <div className="hidden sm:block">
-            <ConnectButton showBalance={false} chainStatus="icon" />
+          <JourneyButton />
+          <div className="hidden md:block">
+            <ConnectButton showBalance={false} chainStatus="none" accountStatus="avatar" />
           </div>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            aria-label="Toggle navigation"
-            className="rounded-md border border-border px-3 py-2 text-sm lg:hidden"
+            aria-controls="mobile-nav"
+            className="oct btn btn-quiet !px-3 !py-2 text-sm xl:hidden"
           >
-            Menu
+            {open ? "Close" : "Menu"}
           </button>
         </div>
       </div>
 
       {open && (
-        <nav className="border-t border-border px-4 pb-4 lg:hidden">
-          <ul className="flex flex-col gap-2 pt-3">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
+        <nav id="mobile-nav" aria-label="Main" className="border-t border-border px-4 pb-5 xl:hidden">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-1 pt-3 sm:grid-cols-4">
+            {NAV.map((s) => (
+              <li key={s.id}>
                 <Link
-                  href={link.href}
+                  href={s.href}
                   onClick={() => setOpen(false)}
-                  className="block py-1.5 text-sm text-foreground/80 hover:text-accent"
+                  aria-current={isActive(s.href) ? "page" : undefined}
+                  className="block py-2 no-underline hover:text-accent aria-[current=page]:text-accent"
                 >
-                  {link.label}
+                  {s.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <div className="pt-3 sm:hidden">
-            <ConnectButton showBalance={false} chainStatus="icon" />
+          <div className="pt-3 md:hidden">
+            <ConnectButton showBalance={false} chainStatus="none" />
           </div>
         </nav>
       )}

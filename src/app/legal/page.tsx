@@ -5,9 +5,9 @@ export default function LegalPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Legal"
-        title="Legal references & framing"
-        lede="ORG's position is that religious freedom protects the right to practice entheogenic spirituality. This page summarizes the references that inform that view — it is not legal advice."
+        id="legal"
+        title="Legal references"
+        lede="ORG holds that religious freedom protects entheogenic spiritual practice. These are the references behind that view, and none of it is legal advice."
       />
 
       <Section>

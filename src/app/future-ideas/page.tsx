@@ -24,16 +24,16 @@ export default function FutureIdeasPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Future"
+        id="future"
         title="Future ideas"
-        lede="Future website, app, and experience concepts for ORG — not commitments, just directions the community is considering and voting on."
+        lede="Website, app, invention, and experience concepts the community is considering. They are directions, not commitments."
       />
 
       <Section>
         <div className="grid gap-5 sm:grid-cols-2">
           {IDEAS.map((idea) => (
             <Card key={idea.title}>
-              <h3 className="font-semibold text-heading">
+              <h3 className="text-xl leading-snug">
                 {idea.title}
               </h3>
               <p className="mt-2 text-sm text-foreground/70">{idea.body}</p>

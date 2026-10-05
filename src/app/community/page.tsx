@@ -4,14 +4,14 @@ export default function CommunityPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Community"
-        title="Meetings, events, and membership"
-        lede="ORG is a community first — a place to connect with others exploring spirituality and entheogens, discuss visions, and shape where the organization goes next."
+        id="community"
+        title="Community"
+        lede="Meetings, events, ceremonies, membership, and the spiritual organizations ORG connects with."
       />
 
       <Section title="Weekly gathering">
         <Card>
-          <h3 className="font-semibold text-heading">
+          <h3 className="text-xl leading-snug">
             Sunday discussion
           </h3>
           <p className="mt-2 text-sm text-foreground/70">

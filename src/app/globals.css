@@ -1,45 +1,87 @@
 @import "tailwindcss";
 
 /*
- * Palettes from the "ORG Design Directions" proposal (org-new-look):
- *   dark  = A · Night Sanctuary
- *   light = B · Prism Light
- * Dark is the default. The toggle sets data-theme on <html>.
+ * Three lights from the "ORG Design Directions" proposal (org-new-look.netlify.app):
+ *   night = A · Night Sanctuary, prism = B · Prism Light, stone = C · Stone & Lapis.
+ * Selectors are attribute-only (not :root) so any element can carry its own light,
+ * which is how the home page shows all three side by side.
  */
 :root,
-:root[data-theme="dark"] {
+[data-theme="night"] {
   --background: #100e1c;
   --foreground: #eee8f6;
   --muted: #b4abc9;
   --surface: #1a1730;
-  --surface-muted: #221d33;
-  --border: #2f2a48;
+  --surface-muted: #221d3a;
+  --border: #352d55;
   --accent: #e9be72;
-  --accent-strong: #f2d08f;
+  --accent-strong: #f5d596;
   --on-accent: #1b1408;
-  --heading: #c9a4ff;
+  --heading: #f4effc;
+  --frame: rgba(255, 248, 232, 0.94);
+  --frame-glow: rgba(201, 164, 255, 0.85);
+  --ink: linear-gradient(100deg, #b39bff 0%, #f08ccf 35%, #6fe3d6 70%, #f2c97f 100%);
+  --bar-track: rgba(238, 232, 246, 0.12);
+  --paper: #1d1836;
+  --perf: rgba(238, 232, 246, 0.46);
+  --seam: rgba(233, 190, 114, 0.9);
   --hero-from: #2a1f52;
-  --aurora: linear-gradient(90deg, #8b6cf6, #e26db1, #4fd1c5);
   --font-heading: var(--font-fraunces), Georgia, serif;
   --font-body: var(--font-manrope), system-ui, sans-serif;
+  --heading-settings: "SOFT" 60, "WONK" 1;
+  --body-leading: 1.65;
   color-scheme: dark;
 }
 
-:root[data-theme="light"] {
+[data-theme="prism"] {
   --background: #f5f3fa;
   --foreground: #221d33;
   --muted: #5e566e;
   --surface: #ffffff;
   --surface-muted: #ece8f6;
-  --border: #d9d3e6;
-  --accent: #8e6420;
-  --accent-strong: #6b4fa0;
+  --border: #dcd5ea;
+  --accent: #6b4fa0;
+  --accent-strong: #553d85;
   --on-accent: #ffffff;
-  --heading: #6b4fa0;
+  --heading: #221d33;
+  --frame: #ffffff;
+  --frame-glow: rgba(107, 79, 160, 0.4);
+  --ink: linear-gradient(100deg, #a8417a 0%, #a4621b 30%, #2c7d67 58%, #3a5fa8 80%, #6b4fa0 100%);
+  --bar-track: #e7e2f2;
+  --paper: #ffffff;
+  --perf: rgba(107, 79, 160, 0.42);
+  --seam: rgba(107, 79, 160, 0.75);
   --hero-from: #ffffff;
-  --aurora: linear-gradient(90deg, #ffb3c7, #ffd9a0, #c8f2c2, #a8e3f5, #c9b8ff);
   --font-heading: var(--font-newsreader), Georgia, serif;
   --font-body: var(--font-hanken), system-ui, sans-serif;
+  --heading-settings: normal;
+  --body-leading: 1.65;
+  color-scheme: light;
+}
+
+[data-theme="stone"] {
+  --background: #ecebe6;
+  --foreground: #1b2433;
+  --muted: #4d5566;
+  --surface: #f7f6f2;
+  --surface-muted: #e3e1da;
+  --border: #d0ccc0;
+  --accent: #22408a;
+  --accent-strong: #18306b;
+  --on-accent: #ffffff;
+  --heading: #1b2433;
+  --frame: #f7f6f2;
+  --frame-glow: rgba(125, 90, 28, 0.45);
+  --ink: linear-gradient(100deg, #22408a 0%, #3d5ea8 45%, #7d5a1c 100%);
+  --bar-track: #dcd8cd;
+  --paper: #f7f6f2;
+  --perf: rgba(125, 90, 28, 0.44);
+  --seam: rgba(125, 90, 28, 0.85);
+  --hero-from: #f7f6f2;
+  --font-heading: var(--font-marcellus), "Trajan Pro", Georgia, serif;
+  --font-body: var(--font-literata), Georgia, serif;
+  --heading-settings: normal;
+  --body-leading: 1.72;
   color-scheme: light;
 }
 
@@ -57,24 +99,376 @@
   --font-sans: var(--font-body);
 }
 
+@layer base {
+html {
+  background: var(--background);
+}
+
 body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: var(--body-leading);
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-heading);
+  font-variation-settings: var(--heading-settings);
+  font-weight: 400;
+  color: var(--heading);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+[data-theme="stone"] h1,
+[data-theme="stone"] h2,
+[data-theme="stone"] .display {
+  letter-spacing: 0.02em;
+}
+
+a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+}
+
+@layer components {
+/* ---------- Octagon geometry ---------- */
+
+.oct {
+  --cut: 14px;
+  clip-path: polygon(
+    var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%, var(--cut) 100%, 0 calc(100% - var(--cut)), 0 var(--cut)
+  );
+}
+
+/* A chamfered card: the outer layer paints the border, the inner layer the surface. */
+.oct-card {
+  --cut: 16px;
+  background: var(--border);
+  padding: 1px;
+}
+.oct-card > .oct-inner {
+  --cut: 15.5px;
+  background: var(--surface);
+  padding: 1.5rem 1.6rem;
+  height: 100%;
+}
+
+.emblem {
+  clip-path: polygon(29.3% 0, 70.7% 0, 100% 29.3%, 100% 70.7%, 70.7% 100%, 29.3% 100%, 0 70.7%, 0 29.3%);
+}
+
+.btn {
+  --cut: 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.35rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 200ms ease, color 200ms ease, transform 200ms ease;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.btn-primary:hover {
+  background: var(--accent-strong);
+}
+.btn-quiet {
+  background: var(--border);
+  color: var(--foreground);
+  position: relative;
+}
+.btn-quiet::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--background);
+  clip-path: inherit;
+  z-index: -1;
+}
+.btn-quiet {
+  isolation: isolate;
+}
+.btn-quiet:hover {
+  color: var(--accent);
+}
+
+.ink-text {
+  background: var(--ink);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+[data-theme="stone"] .ink-text {
+  background: none;
+  color: var(--heading);
+}
+[data-motion="gentle"] .ink-text { animation: ink-drift 18s ease-in-out infinite alternate; }
+[data-motion="vivid"] .ink-text { animation: ink-drift 7s ease-in-out infinite alternate; }
+
+@keyframes ink-drift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+/* ---------- Marble field ---------- */
+
+.marble {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.marble[data-fallback="true"] {
+  background:
+    radial-gradient(60% 70% at 70% 40%, color-mix(in srgb, var(--accent) 35%, transparent), transparent 70%),
+    radial-gradient(50% 60% at 30% 70%, color-mix(in srgb, var(--frame-glow) 60%, transparent), transparent 70%),
+    var(--background);
+}
+
+.cursor-prism {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 60;
+}
+
+/* ---------- Octagon wheel ---------- */
+
+.wheel .wedge {
+  cursor: pointer;
+  outline: none;
+}
+.wheel .wedge-body {
+  transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 300ms ease, filter 300ms ease;
+}
+.wheel:has(.wedge:hover, .wedge:focus-visible) .wedge:not(:hover, :focus-visible) .wedge-body {
+  opacity: 0.62;
+  filter: saturate(0.7);
+}
+.wheel .wedge:hover .wedge-body,
+.wheel .wedge:focus-visible .wedge-body {
+  transform: translate(var(--dx), var(--dy));
+}
+.wheel .wedge-label {
+  font-family: var(--font-heading);
+  font-variation-settings: var(--heading-settings);
+  fill: var(--foreground);
+  font-size: 30px;
+  paint-order: stroke;
+  stroke: var(--background);
+  stroke-width: 7px;
+  stroke-linejoin: round;
+  transition: fill 200ms ease;
+}
+[data-theme="stone"] .wheel .wedge-label { letter-spacing: 0.06em; font-size: 27px; }
+.wheel .wedge:hover .wedge-label,
+.wheel .wedge:focus-visible .wedge-label {
+  fill: var(--accent);
+}
+.wheel .wedge:focus-visible .wedge-edge {
+  stroke: var(--accent);
+  stroke-width: 6;
+}
+.wheel .frame {
+  stroke: var(--frame);
+  filter: drop-shadow(0 0 6px var(--frame-glow));
+}
+[data-theme="prism"] .wheel .frame,
+[data-theme="stone"] .wheel .frame {
+  filter: drop-shadow(0 1px 3px var(--frame-glow));
+}
+.wheel .core-art {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+[data-motion="gentle"] .wheel .core-art { animation: spin 90s linear infinite; }
+[data-motion="vivid"] .wheel .core-art { animation: spin 28s linear infinite; }
+.wheel .core:hover .core-ring,
+.wheel .core:focus-visible .core-ring {
+  stroke: var(--accent);
+}
+
+/* One orchestrated arrival: the frame draws itself, then the doors open clockwise. */
+[data-motion="gentle"] .wheel.arrive .frame,
+[data-motion="vivid"] .wheel.arrive .frame {
+  stroke-dasharray: 3200;
+  stroke-dashoffset: 3200;
+  animation: draw 1600ms cubic-bezier(0.6, 0, 0.3, 1) forwards;
+}
+[data-motion="gentle"] .wheel.arrive .wedge-art,
+[data-motion="vivid"] .wheel.arrive .wedge-art {
+  opacity: 0;
+  animation: bloom 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: calc(700ms + var(--i) * 110ms);
+}
+[data-motion="gentle"] .wheel.arrive .core,
+[data-motion="vivid"] .wheel.arrive .core {
+  opacity: 0;
+  animation: bloom 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) 1600ms forwards;
+}
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes bloom { to { opacity: 1; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- Blotter sheet (after Renan's perforated homepage) ---------- */
+
+.sheet {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: var(--paper);
+}
+.sheet::before,
+.sheet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.sheet::before {
+  background: linear-gradient(to right, var(--seam) 0 2px, transparent 0) -1px 0 / calc(100% / 3) 100%;
+  mask: repeating-linear-gradient(to bottom, #000 0 7px, transparent 7px 11px);
+}
+.sheet::after {
+  background: linear-gradient(to bottom, var(--seam) 0 2px, transparent 0) 0 -1px / 100% calc(100% / 3);
+  mask: repeating-linear-gradient(to right, #000 0 7px, transparent 7px 11px);
+}
+/* Fine tab perforations live inside each tile's art so they never cross a caption. */
+.sheet .tab-art {
+  position: relative;
+}
+.sheet .tab-art::before,
+.sheet .tab-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.sheet .tab-art::before {
+  background: linear-gradient(to right, var(--perf) 0 1px, transparent 0) 0 0 / 20% 100%;
+  mask: repeating-linear-gradient(to bottom, #000 0 3px, transparent 3px 6px);
+}
+.sheet .tab-art::after {
+  background: linear-gradient(to bottom, var(--perf) 0 1px, transparent 0) 0 0 / 100% 20%;
+  mask: repeating-linear-gradient(to right, #000 0 3px, transparent 3px 6px);
+}
+.sheet .tab {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: var(--foreground);
+}
+.sheet .tab img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sheet .tab-art {
+  overflow: hidden;
+}
+.sheet .tab:hover img,
+.sheet .tab:focus-visible img {
+  transform: scale(1.06);
+}
+.sheet .tab-label {
+  display: block;
+  text-align: center;
+  padding: 0.45rem 0.25rem 0.6rem;
+  font-family: var(--font-heading);
+  font-size: clamp(0.8rem, 1.6vw, 1.05rem);
+  background: var(--paper);
+}
+.sheet .tab:hover .tab-label { color: var(--accent); }
+/* Scaled while it turns so the square's corners never show inside the tile. */
+.sheet .core-img { transform: scale(1.45); }
+.sheet .tab:hover .core-img { transform: scale(1.5); }
+[data-motion="gentle"] .sheet .core-img { animation: spin-wide 90s linear infinite; }
+[data-motion="vivid"] .sheet .core-img { animation: spin-wide 28s linear infinite; }
+@keyframes spin-wide {
+  from { transform: scale(1.45) rotate(0deg); }
+  to { transform: scale(1.45) rotate(360deg); }
+}
+
+/* ---------- Vote bar (from Renan's proposal) ---------- */
+
+.vote-bar {
+  height: 4px;
+  background: var(--bar-track);
+  overflow: hidden;
+}
+.vote-bar > i {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+}
+
+/* ---------- Home ---------- */
+
+.themed {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
 }
 
-h1, h2, h3 {
-  font-family: var(--font-heading);
-  font-weight: 500;
+.hero-veil {
+  background:
+    linear-gradient(to bottom, transparent 70%, var(--background) 100%),
+    linear-gradient(to right, var(--background) 0%, color-mix(in srgb, var(--background) 82%, transparent) 30%, color-mix(in srgb, var(--background) 20%, transparent) 62%, transparent 100%);
+}
+@media (max-width: 1023px) {
+  .hero-veil {
+    background:
+      linear-gradient(to bottom, var(--background) 0%, color-mix(in srgb, var(--background) 78%, transparent) 38%, color-mix(in srgb, var(--background) 25%, transparent) 70%, var(--background) 100%);
+  }
 }
 
-.hero-glow {
-  background: radial-gradient(120% 70% at 50% 0%, var(--hero-from) 0%, var(--background) 60%);
+.stir-hint { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .stir-hint { display: block; }
+}
 }
 
-.aurora-text {
-  background: var(--aurora);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* ---------- Motion off ---------- */
+
+[data-motion="still"] *,
+[data-motion="still"] *::before,
+[data-motion="still"] *::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .wheel .wedge-body { transition: none; }
+}
+

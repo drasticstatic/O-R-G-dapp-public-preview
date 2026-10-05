@@ -15,13 +15,12 @@ export function DonateForm() {
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash });
 
   return (
-    <div className="rounded-xl border border-border bg-surface p-6">
-      <h3 className="font-semibold text-heading">
-        Give crypto
-      </h3>
+    <div className="oct-card oct">
+      <div className="oct-inner oct">
+      <h3 className="text-2xl">Give crypto</h3>
 
       {DONATION_ADDRESS_IS_PLACEHOLDER && (
-        <p className="mt-2 rounded-md bg-surface-muted px-3 py-2 text-xs text-foreground/60">
+        <p className="mt-2 bg-surface-muted px-3 py-2 text-xs text-muted">
           This is an early preview. The donation address below is a
           placeholder until ORG designates and verifies a real treasury
           address — sending funds now will not reach ORG.
@@ -44,7 +43,7 @@ export function DonateForm() {
                 key={preset}
                 type="button"
                 onClick={() => setAmount(preset)}
-                className={`rounded-md border px-3 py-1.5 text-sm ${
+                className={`oct border px-3 py-1.5 text-sm ${
                   amount === preset
                     ? "border-accent bg-accent text-on-accent"
                     : "border-border text-foreground/70"
@@ -61,7 +60,7 @@ export function DonateForm() {
               step="0.001"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-32 rounded-md border border-border bg-background px-3 py-1.5 text-sm"
+              className="w-32 border border-border bg-background px-3 py-1.5 text-sm"
             />
             <span className="text-sm text-foreground/60">ETH</span>
           </div>
@@ -74,7 +73,7 @@ export function DonateForm() {
                 value: parseEther(amount || "0"),
               })
             }
-            className="w-full rounded-md bg-accent px-4 py-2 text-sm font-medium text-on-accent hover:bg-accent-strong disabled:opacity-50"
+            className="oct btn btn-primary w-full justify-center disabled:opacity-50"
           >
             {isPending || isConfirming ? "Confirming…" : `Send ${amount || "0"} ETH`}
           </button>
@@ -91,6 +90,7 @@ export function DonateForm() {
           )}
         </div>
       )}
+      </div>
     </div>
   );
 }

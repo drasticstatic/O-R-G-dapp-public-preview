@@ -21,16 +21,16 @@ export default function GivePage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Gifts and Contributions"
-        title="Offerings"
-        lede="ORG offers useful objects to members whether or not they can meet a suggested donation — and accepts contributions in return, crypto included."
+        id="gifts"
+        title="Gifts and contributions"
+        lede="ORG offers useful objects to members whether or not they can meet a suggested donation, and accepts gifts in return."
       />
 
       <Section title="What ORG offers members">
         <div className="grid gap-5 sm:grid-cols-3">
           {OFFERINGS.map((o) => (
             <Card key={o.title}>
-              <h3 className="font-semibold text-heading">
+              <h3 className="text-xl leading-snug">
                 {o.title}
               </h3>
               <p className="mt-2 text-sm text-foreground/70">{o.body}</p>

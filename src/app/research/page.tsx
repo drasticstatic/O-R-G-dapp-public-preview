@@ -23,9 +23,9 @@ export default function ResearchPage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Research"
-        title="Research ideas & directions"
-        lede="ORG pairs spiritual inquiry with real scientific research. Members vote on which directions get the community's focus and funding."
+        id="research"
+        title="Research"
+        lede="Research ideas, study directions, methods, and spiritual science questions. Members vote on where the focus goes."
       />
 
       <Section>
@@ -43,7 +43,7 @@ export default function ResearchPage() {
         <div className="grid gap-5 sm:grid-cols-2">
           {RESEARCH_DIRECTIONS.map((r) => (
             <Card key={r.title}>
-              <h3 className="font-semibold text-heading">
+              <h3 className="text-xl leading-snug">
                 {r.title}
               </h3>
               <p className="mt-2 text-sm text-foreground/70">{r.body}</p>

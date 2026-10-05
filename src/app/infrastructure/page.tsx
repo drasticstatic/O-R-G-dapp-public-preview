@@ -20,9 +20,9 @@ export default function InfrastructurePage() {
   return (
     <div>
       <PageHeader
-        eyebrow="Infrastructure"
+        id="infrastructure"
         title="Building the Octagons"
-        lede="ORG's long-term vision is to build multiple octagon-shaped spiritual temples and research centers around the world — each one improved by what was learned building the last."
+        lede="Octagon-shaped temples and research centers, each one improved by what was learned building the last."
       />
 
       <Section title="Why an octagon">
@@ -38,7 +38,7 @@ export default function InfrastructurePage() {
         <div className="grid gap-5 sm:grid-cols-3">
           {CENTER_IDEAS.map((c) => (
             <Card key={c.title}>
-              <h3 className="font-semibold text-heading">
+              <h3 className="text-xl leading-snug">
                 {c.title}
               </h3>
               <p className="mt-2 text-sm text-foreground/70">{c.body}</p>
