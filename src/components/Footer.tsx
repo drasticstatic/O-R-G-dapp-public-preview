@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SHEET_ORDER, sectionById } from "@/lib/sections";
 import { OctagonMark } from "@/components/OctagonMark";
+import { DIRECTIONS, LAB, LAB_CHANGELOG, ORG_LOG, ORG_SITE } from "@/lib/arrival";
 
 const NAV = SHEET_ORDER.filter((id): id is string => id !== null).map(sectionById);
 
@@ -19,8 +20,13 @@ export function Footer() {
             members vote on every change to it.
           </p>
           <p className="mt-3 text-sm text-muted">
-            Artwork and words come from orgspirituality.org. The three lights come from{" "}
-            <a href="https://org-new-look.netlify.app/" className="text-accent">Renan Teixeira&apos;s design proposal</a>.
+            Part of the <a href={LAB} className="text-accent">drasticstatic ORG lab</a>: every change to this preview is in the{" "}
+            <a href={LAB_CHANGELOG} className="text-accent">lab&apos;s changelog</a>. ORG&apos;s own record is the{" "}
+            <a href={ORG_LOG} className="text-accent">ORG AstroLog</a>.
+          </p>
+          <p className="mt-3 text-sm text-muted">
+            Artwork and words come from orgspirituality.org. The lights began as{" "}
+            <a href={DIRECTIONS} className="text-accent">Renan Teixeira&apos;s design proposal</a>, now kept as history in ORG&apos;s AstroLog.
             Built by{" "}
             <a href="https://github.com/drasticstatic" className="text-accent">drasticstatic</a> with{" "}
             <a href="https://github.com/drasticstatic/anthropas-argus-alfred-public-preview" className="text-accent">Alfred</a>.
@@ -36,6 +42,10 @@ export function Footer() {
           <a href="https://github.com/Octagon-Religious-Research-Group-ORG" className="text-sm text-muted no-underline hover:text-accent">
             GitHub
           </a>
+          <a href={LAB_CHANGELOG} className="text-sm text-muted no-underline hover:text-accent">Lab changelog</a>
+          <a href={`${LAB}ledger/`} className="text-sm text-muted no-underline hover:text-accent">Lab ledger</a>
+          <a href={ORG_SITE} className="text-sm text-muted no-underline hover:text-accent">ORG portal</a>
+          <a href={ORG_LOG} className="text-sm text-muted no-underline hover:text-accent">ORG AstroLog</a>
         </nav>
       </div>
     </footer>

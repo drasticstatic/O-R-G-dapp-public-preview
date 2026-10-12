@@ -72,14 +72,26 @@ export function getExperience(): Experience {
 }
 
 export function setExperience(patch: Partial<Experience>) {
-  current = { ...getExperience(), ...patch };
+  current = { ...read(), ...patch };
   apply(current);
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(current));
+    // Tell the arrival kit to re-read the shared key (it listens for storage events), so its next
+    // write keeps this change (the home page's wheel/sheet view) instead of an older copy.
+    window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY }));
   } catch {
     // Not persisted, but still applied for this page.
   }
   listeners.forEach((notify) => notify());
+}
+
+// ORG's arrival kit (loaded in <head>) writes the same storage key. When it changes a choice, drop
+// the cached copy so the next read (and the next setExperience) starts from what the kit saved.
+if (typeof window !== "undefined") {
+  window.addEventListener("arrival:change", () => {
+    current = read();
+    listeners.forEach((notify) => notify());
+  });
 }
 
 function subscribe(onChange: () => void) {

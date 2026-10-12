@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { HomeHero } from "@/components/HomeHero";
-import { ThreeLights } from "@/components/ThreeLights";
 import { BeliefItem } from "@/components/Belief";
 import { BELIEFS } from "@/lib/beliefs";
 import { withBase } from "@/lib/sections";
@@ -31,27 +30,6 @@ export default function Home() {
           {featured.map((b) => (
             <BeliefItem key={b.roman} belief={b} compact />
           ))}
-        </div>
-      </section>
-
-      <section className="border-y border-border bg-surface-muted/40">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-          <div className="max-w-2xl">
-            <h2 className="text-[2.4rem] leading-tight">Renan&apos;s three directions, living together</h2>
-            <p className="mt-4 text-muted">
-              Renan proposed three looks for orgspirituality.org and asked members to choose one. This
-              preview keeps all three. Pick the one that suits you, or let the time of day choose. Members
-              still decide what the main site becomes.
-            </p>
-            <p className="mt-4">
-              <a href="https://org-new-look.netlify.app/" className="text-accent">
-                See Renan&apos;s proposal
-              </a>
-            </p>
-          </div>
-          <div className="mt-10">
-            <ThreeLights />
-          </div>
         </div>
       </section>
 
