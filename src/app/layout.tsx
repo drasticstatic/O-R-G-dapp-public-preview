@@ -4,8 +4,8 @@ import "./globals.css";
 import { Providers } from "@/components/Providers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { JourneyLayer } from "@/components/Journey";
 import { PREPAINT_SCRIPT } from "@/lib/prepaint";
+import { ORG_KIT, DAPP_SITE } from "@/lib/arrival";
 
 // Two faces per light, as in the design proposal: Night (Fraunces, Manrope),
 // Prism (Newsreader, Hanken Grotesk), Stone (Marcellus, Literata).
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: "ORG: Octagon Religious-Research Group",
   description: DESCRIPTION,
+  alternates: { canonical: SITE },
   openGraph: {
     type: "website",
     url: SITE,
@@ -52,9 +53,19 @@ const fonts = [fraunces, manrope, newsreader, hanken, literata, marcellus].map((
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${fonts} h-full antialiased`}>
+    <html lang="en" data-arrival-site="dapp" suppressHydrationWarning className={`${fonts} h-full antialiased`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: PREPAINT_SCRIPT }} />
+        {/* ORG's arrival kit, by absolute URL from ORG's site (see src/lib/arrival.ts). Synchronous
+            in <head> on purpose: it applies the visitor's light, motion, contrast and reading mode
+            before first paint and defines <arrival-controls> before the header mounts it. */}
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+        <link rel="stylesheet" href={`${ORG_KIT}/arrival.css`} />
+        <script dangerouslySetInnerHTML={{ __html: `window.ARRIVAL_SITE=${JSON.stringify(DAPP_SITE)};` }} />
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src={`${ORG_KIT}/org.js`} />
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src={`${ORG_KIT}/arrival.js`} />
       </head>
       <body className="flex min-h-full flex-col">
         <Providers>
@@ -66,7 +77,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </main>
           <Footer />
-          <JourneyLayer />
         </Providers>
       </body>
     </html>

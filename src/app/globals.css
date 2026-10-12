@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 /*
- * Three lights from the "ORG Design Directions" proposal (org-new-look.netlify.app):
+ * Three lights that began as Renan Teixeira's "ORG Design Directions" proposal
+ * (org-new-look.netlify.app), now kept as history in ORG's AstroLog (/three-directions):
  *   night = A · Night Sanctuary, prism = B · Prism Light, stone = C · Stone & Lapis.
- * Selectors are attribute-only (not :root) so any element can carry its own light,
- * which is how the home page shows all three side by side.
+ * Selectors are attribute-only (not :root) so any element can carry its own light (the arrival
+ * kit's splash cards preview a light that way). The token names are the ones ORG's arrival kit reads.
  */
 :root,
 [data-theme="night"] {
@@ -248,15 +249,6 @@ a {
     var(--background);
 }
 
-.cursor-prism {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 60;
-}
-
 /* ---------- Octagon wheel ---------- */
 
 .wheel .wedge {
@@ -472,3 +464,81 @@ a {
   .wheel .wedge-body { transition: none; }
 }
 
+
+/* ---------- ORG's arrival kit: ORG's octagon shape for the kit's surfaces ----------
+   Copied from ORG's org.css (octagon-religious-research-group-org.github.io/arrival/org.css, the
+   canonical copy), without its tokens: this app keeps its own tokens and next/font faces. Prefixed
+   with html so they win whatever order the kit's stylesheet and this one load in. */
+html:root {
+  --arr-radius: 0px;
+}
+html :is(.arr-shape, .arr-opt, .arr-opt-row, .arr-opt-icon, .arr-link, .arr-notice, .arr-steps button, .arr-switch-track) {
+  border-radius: 0;
+  clip-path: polygon(
+    var(--arr-cut) 0,
+    calc(100% - var(--arr-cut)) 0,
+    100% var(--arr-cut),
+    100% calc(100% - var(--arr-cut)),
+    calc(100% - var(--arr-cut)) 100%,
+    var(--arr-cut) 100%,
+    0 calc(100% - var(--arr-cut)),
+    0 var(--arr-cut)
+  );
+}
+html .arr-drawer .arr-frame {
+  --arr-cut: 12px;
+}
+html .arr-drawer .arr-frame > .arr-in {
+  --arr-cut: 11.5px;
+}
+html .arr-switch-track {
+  --arr-cut: 7px;
+}
+html :is(.arr-avatar-img, .arr-card-check, .arr-step-dot, .arr-switch-track > span, .arr-opt:has(:checked)::after) {
+  border-radius: 0;
+  clip-path: polygon(29.3% 0, 70.7% 0, 100% 29.3%, 100% 70.7%, 70.7% 100%, 29.3% 100%, 0 70.7%, 0 29.3%);
+}
+html .arr-rule {
+  height: 3px;
+  background: linear-gradient(to right, var(--perf) 0 12px, transparent 0) 0 0 / 21px 3px repeat-x;
+}
+html .arr-guide-head {
+  border-bottom: 0;
+  background: linear-gradient(to right, var(--perf) 0 12px, transparent 0) bottom left / 21px 3px repeat-x;
+}
+html .arr-guide-foot {
+  border-top: 0;
+  background: linear-gradient(to right, var(--perf) 0 12px, transparent 0) top left / 21px 3px repeat-x;
+}
+html .arr-card-ink {
+  background-size: 220% 100%;
+}
+:root:not([data-motion="still"]) .arr-card-ink {
+  animation: ink-drift 18s ease-in-out infinite alternate;
+}
+/* The header is busy (nine sections, the wallet button): the kit's tools drop their word labels. */
+.arr-host {
+  display: inline-flex;
+}
+.arr-host [data-arr-drawer] .arr-chip-label,
+.arr-host .arr-chip-search .arr-chip-label {
+  display: none;
+}
+@media (max-width: 420px) {
+  .arr-host .arr-swatches,
+  .arr-host .arr-cursor-btn,
+  .arr-host .arr-reading-btn {
+    display: none;
+  }
+}
+/* Reading mode (Stone & Lapis, still, more contrast, no trail): the marbled ink fades back. */
+:root[data-reading="on"] .marble {
+  opacity: 0.28;
+  transition: opacity 0.3s ease;
+}
+.lab-strip a {
+  text-decoration: none;
+}
+.lab-strip a:hover {
+  text-decoration: underline;
+}

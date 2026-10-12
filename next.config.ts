@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
     config.plugins.push(
       new webpack.IgnorePlugin({
         resourceRegExp: /^@x402\//,
+      }),
+      // MetaMask's SDK (also via wagmi) optionally imports React Native's storage, which never
+      // exists in a browser build; webpack only warned about it. Same treatment as @x402 above.
+      new webpack.IgnorePlugin({
+        resourceRegExp: /^@react-native-async-storage\/async-storage$/,
       })
     );
     return config;

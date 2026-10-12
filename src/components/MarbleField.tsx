@@ -156,6 +156,8 @@ export function MarbleField({ className = "" }: { className?: string }) {
 
     const onMove = (e: PointerEvent) => {
       if (e.pointerType === "touch") return;
+      // Cursor effects switched off (or resting on Still) in the arrival kit: the ink isn't stirred.
+      if (document.documentElement.dataset.cursor === "off") return;
       const rect = canvas.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / rect.width;
       const ny = 1 - (e.clientY - rect.top) / rect.height;
