@@ -16,10 +16,36 @@ const hanken = Hanken_Grotesk({ variable: "--font-hanken", subsets: ["latin"] })
 const literata = Literata({ variable: "--font-literata", subsets: ["latin"], axes: ["opsz"] });
 const marcellus = Marcellus({ variable: "--font-marcellus", subsets: ["latin"], weight: "400" });
 
+// Link previews (Telegram, iMessage, Slack…): absolute URLs and a real 1200×630 JPEG in public/.
+const SITE = "https://drasticstatic.github.io/O-R-G-dapp-public-preview/";
+const DESCRIPTION =
+  "Where science and spirituality meet. A member-governed community that votes on its beliefs and plans octagon-shaped temples and research centers.";
+const SOCIAL = {
+  url: `${SITE}social-card.jpg`,
+  width: 1200,
+  height: 630,
+  type: "image/jpeg",
+  alt: "O-R-G dApp preview from the drasticstatic ORG lab: Where science and spirituality meet, with ORG's rainbow octagon art.",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE),
   title: "ORG: Octagon Religious-Research Group",
-  description:
-    "Where science and spirituality meet. A member-governed community that votes on its beliefs and plans octagon-shaped temples and research centers.",
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    url: SITE,
+    siteName: "O-R-G dApp preview",
+    title: "O-R-G dApp preview: Octagon Religious-Research Group",
+    description: DESCRIPTION,
+    images: [SOCIAL],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "O-R-G dApp preview: Octagon Religious-Research Group",
+    description: DESCRIPTION,
+    images: [{ url: SOCIAL.url, alt: SOCIAL.alt }],
+  },
 };
 
 const fonts = [fraunces, manrope, newsreader, hanken, literata, marcellus].map((f) => f.variable).join(" ");
