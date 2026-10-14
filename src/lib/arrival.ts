@@ -14,6 +14,14 @@ export const LAB = "https://drasticstatic.github.io/O-R-G-astro-public/";
 export const LAB_CHANGELOG = `${LAB}changelog/`;
 export const DAPP = "https://drasticstatic.github.io/O-R-G-dapp-public-preview/";
 export const DIRECTIONS = `${ORG_LOG}three-directions`;
+// Where the lab and this preview are headed, and what keeps them running (the lab's pages).
+export const LAB_ROADMAP = `${LAB}roadmap`;
+export const LAB_SUSTAINABILITY = `${LAB}sustainability`;
+// ORG's own ways in: the kit's Reach out and Community windows open from these (data-arrival-open),
+// and the hrefs are the no-JavaScript fallback. ORG's donate page lives on its portal.
+export const ORG_CONTACT = "https://orgspirituality.org/about#contact";
+export const ORG_COMMUNITY = "https://orgspirituality.org/community";
+export const ORG_DONATE = `${ORG_SITE}donate/`;
 
 // This site's entry in the kit (window.ARRIVAL_SITE, read before arrival.js runs).
 export const DAPP_SITE = {
@@ -52,5 +60,7 @@ export const DAPP_SITE = {
     { t: "Give to ORG", k: "dApp", i: "gift", h: `${DAPP}give`, x: "donate crypto wallet ethereum gift" },
     { t: "Join", k: "dApp", i: "hand-heart", h: `${DAPP}join`, x: "membership member" },
     { t: "Three directions, living together", k: "ORG AstroLog", i: "compass-tool", h: DIRECTIONS, x: "renan design directions history three lights feedback" },
+    { t: "The lab's roadmap", k: "lab", i: "path", h: `${LAB}roadmap`, x: "plans next future crypto giving" },
+    { t: "The lab's sustainability", k: "lab", i: "plant", h: `${LAB}sustainability`, x: "tokens rebuild upkeep reown allowlist wallet" },
   ],
 };

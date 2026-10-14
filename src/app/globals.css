@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * Three lights that began as Renan Teixeira's "ORG Design Directions" proposal
+ * Three lights that began as Renan T's "ORG Design Directions" proposal
  * (org-new-look.netlify.app), now kept as history in ORG's AstroLog (/three-directions):
  *   night = A · Night Sanctuary, prism = B · Prism Light, stone = C · Stone & Lapis.
  * Selectors are attribute-only (not :root) so any element can carry its own light (the arrival

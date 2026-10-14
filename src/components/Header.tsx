@@ -7,7 +7,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { SHEET_ORDER, sectionById } from "@/lib/sections";
 import { OctagonMark } from "@/components/OctagonMark";
 import { ArrivalControls } from "@/components/ArrivalControls";
-import { LAB, LAB_CHANGELOG, ORG_LOG } from "@/lib/arrival";
+import { LAB, LAB_CHANGELOG, ORG_LOG, ORG_CONTACT, ORG_COMMUNITY, ORG_DONATE } from "@/lib/arrival";
 
 const NAV = SHEET_ORDER.filter((id): id is string => id !== null).map(sectionById);
 
@@ -21,14 +21,19 @@ export function Header() {
       {/* Part of the drasticstatic ORG lab: say so, and link the lab's changelog where it's seen. */}
       <div className="lab-strip border-b border-border/60 text-[0.8rem] text-muted">
         <div className="mx-auto flex max-w-7xl items-center gap-x-4 gap-y-1 overflow-x-auto whitespace-nowrap px-4 py-1.5 sm:px-6">
-          <span>
-            A preview from the <a href={LAB} className="text-accent">drasticstatic ORG lab</a>
-          </span>
+          <span>A preview from</span>
+          <a href={LAB} className="inline-flex items-center gap-1 text-accent">
+            <i className="ph ph-flask" aria-hidden="true" />
+            the drasticstatic ORG lab
+          </a>
           <a href={LAB_CHANGELOG} className="inline-flex items-center gap-1 font-semibold text-accent">
             <i className="ph ph-clock-counter-clockwise" aria-hidden="true" />
             Lab changelog
           </a>
-          <a href={ORG_LOG} className="hidden text-muted hover:text-accent sm:inline">ORG AstroLog</a>
+          <a href={ORG_LOG} className="hidden items-center gap-1 text-muted hover:text-accent sm:inline-flex">
+            <i className="ph ph-door-open" aria-hidden="true" />
+            ORG AstroLog
+          </a>
         </div>
       </div>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
@@ -43,8 +48,9 @@ export function Header() {
               key={s.id}
               href={s.href}
               aria-current={isActive(s.href) ? "page" : undefined}
-              className="text-[0.92rem] text-foreground/80 no-underline transition-colors hover:text-accent aria-[current=page]:text-accent aria-[current=page]:underline"
+              className="inline-flex items-center gap-1.5 text-[0.92rem] text-foreground/80 no-underline transition-colors hover:text-accent aria-[current=page]:text-accent aria-[current=page]:underline"
             >
+              <i className={`ph ph-${s.icon} text-accent`} aria-hidden="true" />
               {s.label}
             </Link>
           ))}
@@ -62,6 +68,7 @@ export function Header() {
             aria-controls="mobile-nav"
             className="oct btn btn-quiet !px-3 !py-2 text-sm 2xl:hidden"
           >
+            <i className={`ph ph-${open ? "x" : "list"}`} aria-hidden="true" />
             {open ? "Close" : "Menu"}
           </button>
         </div>
@@ -76,16 +83,40 @@ export function Header() {
                   href={s.href}
                   onClick={() => setOpen(false)}
                   aria-current={isActive(s.href) ? "page" : undefined}
-                  className="block py-2 no-underline hover:text-accent aria-[current=page]:text-accent"
+                  className="flex items-center gap-2 py-2 no-underline hover:text-accent aria-[current=page]:text-accent"
                 >
+                  <i className={`ph ph-${s.icon} text-accent`} aria-hidden="true" />
                   {s.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <p className="pt-3 text-sm">
-            <a href={LAB_CHANGELOG} className="text-accent">The lab&apos;s changelog</a>
-          </p>
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-1 border-t border-border/60 pt-3 mt-2 text-sm sm:grid-cols-4">
+            <li>
+              <a href={LAB_CHANGELOG} className="flex items-center gap-2 py-2 text-accent no-underline">
+                <i className="ph ph-clock-counter-clockwise" aria-hidden="true" />
+                The lab&apos;s changelog
+              </a>
+            </li>
+            <li>
+              <a href={ORG_COMMUNITY} data-arrival-open="community" className="flex items-center gap-2 py-2 no-underline hover:text-accent">
+                <i className="ph ph-chats-circle text-accent" aria-hidden="true" />
+                Where ORG gathers
+              </a>
+            </li>
+            <li>
+              <a href={ORG_CONTACT} data-arrival-open="contact" className="flex items-center gap-2 py-2 no-underline hover:text-accent">
+                <i className="ph ph-envelope-simple text-accent" aria-hidden="true" />
+                Reach out
+              </a>
+            </li>
+            <li>
+              <a href={ORG_DONATE} className="flex items-center gap-2 py-2 no-underline hover:text-accent">
+                <i className="ph ph-heart text-accent" aria-hidden="true" />
+                Donate to ORG
+              </a>
+            </li>
+          </ul>
           <div className="pt-3 md:hidden">
             <ConnectButton showBalance={false} chainStatus="none" />
           </div>

@@ -1,7 +1,7 @@
 # O-R-G-dapp
 
 > Next.js + web3 dApp for the Octagon Research Group and Spirituality Centers — founder
-> **Tripp Aardema** ([orgspirituality.org](https://orgspirituality.org)).
+> **Tripp A** ([orgspirituality.org](https://orgspirituality.org)).
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey?style=flat)](LICENSE)
 [![Public Preview](https://img.shields.io/badge/%F0%9F%8C%90%20Public%20Preview-Available-brightgreen)](https://drasticstatic.github.io/O-R-G-dapp-public-preview/)
