@@ -5,6 +5,8 @@ export type Section = {
   art: string;
   subtitle: string;
   live: string;
+  /** Phosphor icon shown beside the label in the nav and footer (ORG's sites use the same set). */
+  icon: string;
 };
 
 // Wheel order runs clockwise from the top edge. It is the live homepage's 3×3 sheet
@@ -12,6 +14,7 @@ export type Section = {
 export const SECTIONS: Section[] = [
   {
     id: "community",
+    icon: "users-three",
     label: "Community",
     href: "/community",
     art: "/art/community.webp",
@@ -20,6 +23,7 @@ export const SECTIONS: Section[] = [
   },
   {
     id: "beliefs",
+    icon: "scales",
     label: "Beliefs",
     href: "/beliefs",
     art: "/art/beliefs.webp",
@@ -28,6 +32,7 @@ export const SECTIONS: Section[] = [
   },
   {
     id: "research",
+    icon: "flask",
     label: "Research",
     href: "/research",
     art: "/art/research.webp",
@@ -36,6 +41,7 @@ export const SECTIONS: Section[] = [
   },
   {
     id: "gifts",
+    icon: "gift",
     label: "Gifts",
     href: "/give",
     art: "/art/gifts.webp",
@@ -44,6 +50,7 @@ export const SECTIONS: Section[] = [
   },
   {
     id: "future",
+    icon: "lightbulb",
     label: "Future",
     href: "/future-ideas",
     art: "/art/future.webp",
@@ -52,6 +59,7 @@ export const SECTIONS: Section[] = [
   },
   {
     id: "legal",
+    icon: "scroll",
     label: "Legal",
     href: "/legal",
     art: "/art/legal.webp",
@@ -60,6 +68,7 @@ export const SECTIONS: Section[] = [
   },
   {
     id: "infrastructure",
+    icon: "buildings",
     label: "Infrastructure",
     href: "/infrastructure",
     art: "/art/infrastructure.webp",
@@ -68,6 +77,7 @@ export const SECTIONS: Section[] = [
   },
   {
     id: "about",
+    icon: "info",
     label: "About",
     href: "/about",
     art: "/art/about.webp",
