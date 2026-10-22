@@ -1,0 +1,43 @@
+1:"$Sreact.fragment"
+2:I[90484,[],"OutletBoundary"]
+3:"$Sreact.suspense"
+7:I[90484,[],"ViewportBoundary"]
+8:I[90484,[],"MetadataBoundary"]
+:HL["/O-R-G-dapp-public-preview/art/community.webp","image"]
+6:X
+21:X
+21:C
+0:{"buildId":"AzTR2H1r42mlV5CF6-IA5","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"children":[["$","header",null,{"className":"relative overflow-hidden border-b border-border","children":[["$","div",null,{"aria-hidden":true,"className":"pointer-events-none absolute inset-0","style":{"background":"radial-gradient(80% 120% at 85% 0%, var(--hero-from), var(--background) 70%)"}}],["$","div",null,{"className":"relative mx-auto grid max-w-5xl items-center gap-8 px-4 py-14 sm:px-6 sm:py-20 md:grid-cols-[auto_1fr]","children":[["$","img",null,{"src":"/O-R-G-dapp-public-preview/art/community.webp","alt":"","className":"emblem h-28 w-28 object-cover sm:h-36 sm:w-36"}],["$","div",null,{"children":[["$","h1",null,{"className":"text-4xl leading-[1.05] sm:text-6xl","children":"Community"}],["$","p",null,{"className":"mt-4 max-w-2xl text-lg text-muted","children":"Meetings, events, ceremonies, membership, and the spiritual organizations ORG connects with."}],["$","p",null,{"className":"mt-4 text-sm","children":["$","a",null,{"href":"https://orgspirituality.org/community","className":"text-accent","children":["Read the full ","community"," page on orgspirituality.org"]}]}]]}]]}],["$","div",null,{"aria-hidden":true,"className":"h-[3px] w-full","style":{"background":"var(--ink)"}}]]}],["$","section",null,{"className":"mx-auto max-w-3xl px-4 py-10 sm:px-6 ","children":[["$","h2",null,{"className":"text-[1.9rem] leading-tight","children":"Weekly gathering"}],["$","div",null,{"className":"mt-4 space-y-4 text-foreground/90","children":["$","div",null,{"className":"oct-card oct ","children":["$","div",null,{"className":"oct-inner oct","children":[["$","h3",null,{"className":"text-xl leading-snug","children":"Sunday discussion"}],["$","p",null,{"className":"mt-2 text-sm text-foreground/70","children":"A 40-minute discussion of spirituality, entheogens, and any visions members would like to share. Sundays, 10:00–11:30 (time and format to be confirmed as the community grows — check back or join to get the current schedule)."}]]}]}]}]]}],["$","section",null,{"className":"mx-auto max-w-3xl px-4 py-10 sm:px-6 ","children":[["$","h2",null,{"className":"text-[1.9rem] leading-tight","children":"What membership includes"}],["$","div",null,{"className":"mt-4 space-y-4 text-foreground/90","children":["$","ul",null,{"className":"list-disc space-y-2 pl-5","children":[["$","li",null,{"children":"A personal profile with a bio and stated spiritual/research beliefs."}],["$","li",null,{"children":"A vote on every proposed belief, research direction, and how ORG spends its funds."}],["$","li",null,{"children":"A vote on new member admittance and on the rare circumstances that would warrant removing a member."}],["$","li",null,{"children":"The ability to submit ideas for anything else the community should consider."}],["$","li",null,{"children":"Regular meetings, in person and/or over video chat, to connect with other members."}]]}]}]]}],["$","section",null,{"className":"mx-auto max-w-3xl px-4 py-10 sm:px-6 ","children":[["$","h2",null,{"className":"text-[1.9rem] leading-tight","children":"Ground rules"}],["$","div",null,{"className":"mt-4 space-y-4 text-foreground/90","children":["$","p",null,{"children":"ORG welcomes people of all spiritualities, religions, and the lack thereof. The one requirement is mutual respect: members are expected to respect the beliefs of others and to act without violence, especially toward those less able to protect themselves. Serious violations — abuse, disrespect for others' beliefs, or physical violence — are grounds for the community to vote on removal."}]}]]}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":"$@5","staleTime":"$6","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L7",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L8",null,{"children":["$","$3",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"ORG: Octagon Religious-Research Group"}],"$L9","$La","$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16","$L17","$L18","$L19","$L1a","$L1b","$L1c"]}]}]}],"$L1d"]}],"isPartial":"$@1e","staleTime":"$6","varyParams":null},{"rsc":"$L1f","isPartial":"$@20","staleTime":"$6","varyParams":"$21"}],"isUpgradeableISRFallback":false,"a":"$@22","rootVaryParams":null,"needsRuntimeRequest":"$@23"}
+24:I[86869,[],"IconMark"]
+25:I[57121,[],""]
+26:I[74581,[],""]
+4:null
+9:["$","meta","1",{"name":"description","content":"Where science and spirituality meet. A member-governed community that votes on its beliefs and plans octagon-shaped temples and research centers."}]
+a:["$","link","2",{"rel":"canonical","href":"https://drasticstatic.github.io/O-R-G-dapp-public-preview/"}]
+b:["$","meta","3",{"property":"og:title","content":"O-R-G dApp preview: Octagon Religious-Research Group"}]
+c:["$","meta","4",{"property":"og:description","content":"Where science and spirituality meet. A member-governed community that votes on its beliefs and plans octagon-shaped temples and research centers."}]
+d:["$","meta","5",{"property":"og:url","content":"https://drasticstatic.github.io/O-R-G-dapp-public-preview/"}]
+e:["$","meta","6",{"property":"og:site_name","content":"O-R-G dApp preview"}]
+f:["$","meta","7",{"property":"og:image","content":"https://drasticstatic.github.io/O-R-G-dapp-public-preview/social-card.jpg"}]
+10:["$","meta","8",{"property":"og:image:type","content":"image/jpeg"}]
+11:["$","meta","9",{"property":"og:image:width","content":"1200"}]
+12:["$","meta","10",{"property":"og:image:height","content":"630"}]
+13:["$","meta","11",{"property":"og:image:alt","content":"O-R-G dApp preview from the drasticstatic ORG lab: Where science and spirituality meet, with ORG's rainbow octagon art."}]
+14:["$","meta","12",{"property":"og:type","content":"website"}]
+15:["$","meta","13",{"name":"twitter:card","content":"summary_large_image"}]
+16:["$","meta","14",{"name":"twitter:title","content":"O-R-G dApp preview: Octagon Religious-Research Group"}]
+17:["$","meta","15",{"name":"twitter:description","content":"Where science and spirituality meet. A member-governed community that votes on its beliefs and plans octagon-shaped temples and research centers."}]
+18:["$","meta","16",{"name":"twitter:image","content":"https://drasticstatic.github.io/O-R-G-dapp-public-preview/social-card.jpg"}]
+19:["$","meta","17",{"name":"twitter:image:alt","content":"O-R-G dApp preview from the drasticstatic ORG lab: Where science and spirituality meet, with ORG's rainbow octagon art."}]
+1a:["$","link","18",{"rel":"icon","href":"/O-R-G-dapp-public-preview/icon.png?f732bf7d5525cbea","type":"image/png","sizes":"512x512"}]
+1b:["$","link","19",{"rel":"apple-touch-icon","href":"/O-R-G-dapp-public-preview/apple-icon.png?0971b98bd6a63e92","type":"image/png","sizes":"180x180"}]
+1c:["$","$L24","20",{}]
+1d:["$","meta",null,{"name":"next-size-adjust","content":""}]
+1f:["$","$1","c",{"children":[null,["$","$L25",null,{"parallelRouterKey":"children","template":["$","$L26",null,{}]}]]}]
+23:true
+6:300
+6:C
+22:0
+1e:"$undefined"
+20:"$undefined"
+5:"$undefined"
