@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PageHeader, Section, Card } from "@/components/Page";
-import { DonateForm } from "@/components/DonateForm";
+import { GiveCrypto } from "@/components/GiveCrypto";
 
 const OFFERINGS = [
   {
@@ -51,7 +51,7 @@ export default function GivePage() {
           </Link>
           .
         </p>
-        <DonateForm />
+        <GiveCrypto />
       </Section>
     </div>
   );
