@@ -10,6 +10,8 @@
 export const ORG_SITE = "https://octagon-religious-research-group-org.github.io/";
 export const ORG_KIT = `${ORG_SITE}arrival`;
 export const ORG_LOG = `${ORG_SITE}changelog-astro-public/`;
+// ORG's reading room, public shelf: the proposals, procedures and decks ORG has chosen to share.
+export const ORG_ROOM = `${ORG_SITE}reading-room-public/`;
 export const LAB = "https://drasticstatic.github.io/O-R-G-astro-public/";
 export const LAB_CHANGELOG = `${LAB}changelog/`;
 export const DAPP = "https://drasticstatic.github.io/O-R-G-dapp-public-preview/";
