@@ -35,7 +35,7 @@ same pattern as [`gratitude-token-project`](https://github.com/drasticstatic/gra
 → [`gratitude-token-project_astro`](https://github.com/drasticstatic/gratitude-token-project_astro).
 
 Everything not named in the sync workflow's `public_allowlist` stays private by default, including
-this repo's agent orchestration files (`agent-notes/`, `CLAUDE.md`, `AGENTS.md`, `.claude/`,
+this repo's agent orchestration files (an agent-notes folder, `CLAUDE.md`, `AGENTS.md`, `.claude/`,
 `.githooks/`, `scripts/`).
 
 Sidecar site: [`O-R-G-astro`](https://github.com/drasticstatic/O-R-G-astro) (changelog-as-content),
