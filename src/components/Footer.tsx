@@ -11,6 +11,7 @@ import {
   ORG_CONTACT,
   ORG_DONATE,
   ORG_LOG,
+  ORG_ROOM,
   ORG_SITE,
 } from "@/lib/arrival";
 
@@ -50,6 +51,7 @@ const GROUPS: { label: string; icon: string; links: FootLink[] }[] = [
       { href: "https://orgspirituality.org", label: "orgspirituality.org", icon: "globe-hemisphere-west" },
       { href: ORG_SITE, label: "ORG portal", icon: "house-simple" },
       { href: ORG_LOG, label: "ORG AstroLog", icon: "door-open" },
+      { href: ORG_ROOM, label: "Proposals, procedures & decks", icon: "book-open-text" },
       { href: DIRECTIONS, label: "Three directions", icon: "compass-tool" },
       { href: "https://github.com/Octagon-Religious-Research-Group-ORG", label: "GitHub", icon: "github-logo" },
     ],
